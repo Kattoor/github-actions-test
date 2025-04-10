@@ -24,13 +24,20 @@ try {
 
 
 function git(test) {
+    const repo = 'https://github.com/Kattoor/github-actions-test.git';
+    const branch = 'main';
+    const token = process.env.GITHUB_PAT;
+    // Clone the repo into a temp folder
+    execSync(`git clone --depth=1 --branch=${branch} https://${token}@github.com/Kattoor/github-actions-test.git repo`);
 
-    fs.writeFileSync('data.json', JSON.stringify(test, null, 2));
+    // Write the data into the cloned repo
+    fs.writeFileSync('repo/data.json', JSON.stringify(data, null, 2));
 
-    execSync('git config --global user.name "Kattoor-RailwayBot"');
-    execSync('git config --global user.email "jasper.catthoor@gmail.com"');
-
+    // Commit and push
+    process.chdir('repo');
+    execSync('git config user.name "Kattoor-RailwayBot"');
+    execSync('git config user.email "jasper.catthoor@gmail.com"');
     execSync('git add data.json');
     execSync(`git commit -m "Update scrape data: ${new Date().toISOString()}" || echo "No changes"`);
-    execSync('git push https://$GITHUB_PAT@github.com/Kattoor/github-actions-test.git HEAD:main');
+    execSync(`git push https://${token}@github.com/Kattoor/github-actions-test.git`);
 }
