@@ -1,0 +1,6 @@
+[
+  {
+    "command": "node scraper.js",
+    "schedule": "*/5 * * * *"
+  }
+]
