@@ -6,7 +6,7 @@ const url = 'https://jsonplaceholder.typicode.com/posts';
 try {
     const res = await fetch(url);
     const data = await res.json();
-    git(data);
+    git(data + '' + Math.random());
     console.log('✅ Data written to data.json');
 } catch (err) {
     console.error('❌ Failed to fetch:', err);
