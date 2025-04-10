@@ -30,12 +30,7 @@ function git(test) {
     execSync('git config --global user.name "Kattoor-RailwayBot"');
     execSync('git config --global user.email "jasper.catthoor@gmail.com"');
 
-    execSync('git init');
-    execSync('git remote add origin https://$GITHUB_PAT@github.com/Kattoor/github-actions-test.git');
-    execSync('git fetch');
-    execSync('git checkout main');
-
     execSync('git add data.json');
     execSync(`git commit -m "Update scrape data: ${new Date().toISOString()}" || echo "No changes"`);
-    execSync('git push origin main');
+    execSync('git push https://$GITHUB_PAT@github.com/Kattoor/github-actions-test.git HEAD:main');
 }
