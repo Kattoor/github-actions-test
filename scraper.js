@@ -23,7 +23,7 @@ try {
 
 
 
-function git(test) {
+function git(data) {
     const repo = 'https://github.com/Kattoor/github-actions-test.git';
     const branch = 'main';
     const token = process.env.GITHUB_PAT;
