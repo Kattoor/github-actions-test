@@ -1,3 +1,6 @@
+import { execSync } from 'child_process';
+import fs from 'fs';
+
 const url = 'https://jsonplaceholder.typicode.com/posts';
 
 try {
@@ -21,8 +24,6 @@ try {
 
 
 function git(test) {
-    import { execSync } from 'child_process';
-    import fs from 'fs';
 
     fs.writeFileSync('data.json', JSON.stringify(test, null, 2));
 
